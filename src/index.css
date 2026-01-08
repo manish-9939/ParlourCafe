@@ -1,0 +1,247 @@
+/* 
+  Total Brand Unity - Parlour Café
+  Final Audit-Fixed CSS
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+:root {
+  --gold: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --gold-dark: #b8860b;
+  --dark: #080808;
+  --dark-soft: #121212;
+  --white: #ffffff;
+  --gray: #999999;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  background-color: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--dark);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+.heading-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- GLOBAL ANIMATIONS --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- NAVBAR UNITY --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  padding: 15px 0;
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+/* --- BTN ELITE --- */
+.btn-premium {
+  padding: 14px 30px;
+  background: var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-premium:hover {
+  background: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* --- DISCOVERY GRID (Corrected) --- */
+.discovery-container {
+  padding: 100px 0;
+}
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 35px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.circle-wrapper {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  padding: 8px;
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.circle-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: 0.6s ease;
+}
+
+.category-card span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--gray);
+  transition: var(--transition);
+}
+
+.category-card:hover .circle-wrapper {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+  box-shadow: 0 0 30px var(--gold-glow);
+  transform: translateY(-8px);
+}
+
+.category-card:hover span {
+  color: var(--gold);
+  letter-spacing: 3.5px;
+}
+
+/* --- RESPONSIVNESS AUDIT --- */
+@media (max-width: 1024px) {
+  .grid-parent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .navbar {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-parent {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .circle-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero-minimal h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .circle-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .category-card span {
+    font-size: 0.65rem;
+  }
+}
+
+/* Optimizations */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+/* --- KINETIC HERO --- */
+.hero-kinetic { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero-kinetic-left { width: 55%; padding-left: 8%; z-index: 10; position: relative; }
+.hero-kinetic-right { width: 45%; height: 100%; position: relative; z-index: 5; }
+.hero-image-frame { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.hero-image-frame img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) contrast(1.1); }
+.hero-image-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--dark) 0%, transparent 100%); }
+.hero-badge { color: var(--gold); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; font-weight: 700; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+.hero-badge::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+.hero-kinetic h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; margin-bottom: 30px; font-weight: 700; }
+.hero-kinetic p { color: var(--gray); max-width: 500px; margin-bottom: 50px; font-size: 1.1rem; line-height: 1.8; }
+@media (max-width: 1024px) { .hero-kinetic-right { width: 100%; position: absolute; top: 0; left: 0; opacity: 0.4; } .hero-kinetic-left { width: 100%; padding: 0 5%; text-align: center; display: flex; flexDirection: column; align-items: center; justify-content: center; } .hero-badge { justify-content: center; } .hero-kinetic h1 { font-size: 3.5rem; } .hero-image-frame::after { background: radial-gradient(circle, transparent 0%, var(--dark) 90%); } }
+.hero-scroll-hint { position: absolute; bottom: 40px; left: 8%; display: flex; align-items: center; gap: 15px; color: var(--gray); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; z-index: 20; }
+.hero-scroll-hint span { width: 1px; height: 40px; background: var(--gold); display: block; animation: scrollAnim 2s infinite ease-in-out; }
+@keyframes scrollAnim { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 50.1% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
