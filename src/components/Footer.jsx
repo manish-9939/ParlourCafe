@@ -13,7 +13,7 @@ const Footer = () => {
             zIndex: 10
         }}>
             <div className="container">
-                <div className="grid-2" style={{ gap: '100px', marginBottom: '80px', alignItems: 'flex-start' }}>
+                <div className="grid-2" style={{ marginBottom: '80px', alignItems: 'flex-start' }}>
 
                     {/* Brand Section */}
                     <div style={{ maxWidth: '400px' }}>
@@ -94,5 +94,6 @@ const Footer = () => {
         </footer>
     );
 };
+
 
 export default Footer;

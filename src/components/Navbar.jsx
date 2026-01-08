@@ -21,19 +21,19 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
         { name: 'AI Stylist', path: '/ai-stylist' },
-        { name: 'Booking', path: '/booking' },
+        // { name: 'Booking', path: '/booking' },
     ];
 
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/" className="logo" style={{ fontSize: '1.4rem', fontWeight: '700', textDecoration: 'none', color: 'white', letterSpacing: '4px' }}>
+                <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'white' }}>
                     PARLOUR<span className="text-gold">CAFÉ</span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }} className="desktop-nav">
-                    <div className="nav-links" style={{ display: 'flex', gap: '30px' }}>
+                <div className="desktop-nav" style={{ alignItems: 'center', gap: '40px' }}>
+                    <div className="nav-links">
                         {links.map((link) => (
                             <Link
                                 key={link.name}
@@ -59,7 +59,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Trigger */}
-                <div className="mobile-only" style={{ display: 'none', cursor: 'pointer', zIndex: 1100 }} onClick={() => setIsOpen(!isOpen)}>
+                <div className="mobile-only" style={{ cursor: 'pointer', zIndex: 1100 }} onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <X color="var(--gold)" size={28} /> : <Menu color="var(--gold)" size={28} />}
                 </div>
             </div>
@@ -117,15 +117,9 @@ const Navbar = () => {
                     </>
                 )}
             </AnimatePresence>
-
-            <style>{`
-                @media (max-width: 1024px) {
-                    .desktop-nav { display: none !important; }
-                    .mobile-only { display: block !important; }
-                }
-            `}</style>
         </nav>
     );
 };
+
 
 export default Navbar;

@@ -69,13 +69,13 @@ const Booking = () => {
                     <h1 className="hero-title">Private <span className="text-outline">Reservation</span></h1>
                 </header>
 
-                <div className="grid-2" style={{ gap: '100px' }}>
+                <div className="grid-2">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="section-title">The Parlour <br /><span className="text-gold">Experience</span></h2>
+                        <h2 style={{ fontSize: '3rem', marginBottom: '20px' }}>The Parlour <br /><span className="text-gold">Experience</span></h2>
                         <p style={{ color: 'var(--gray)', marginBottom: '30px' }}>
                             Your reservation is the first step into a world of curated beauty. Due to high demand, we recommend booking at least 48 hours in advance.
                         </p>
@@ -112,7 +112,7 @@ const Booking = () => {
                             />
                         </div>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <div className="responsive-grid">
                             <div className="input-group">
                                 <label style={{ display: 'block', marginBottom: '10px', fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--gold)' }}>Email</label>
                                 <input
@@ -156,6 +156,7 @@ const Booking = () => {
                         <button type="submit" className="btn-premium">Confirm {formData.service} Reservation</button>
                     </motion.form>
                 </div>
+
             </div>
         </div>
     );

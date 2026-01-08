@@ -61,14 +61,13 @@ const AIStylist = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, x: -20 }}
                             className="business-card"
-                            style={{ padding: '60px', borderRadius: '0', border: '1px solid var(--glass-border)' }}
                         >
                             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                                 <Smile size={48} color="var(--gold)" style={{ marginBottom: '20px' }} />
                                 <h2 style={{ fontSize: '2rem' }}>Define Face Shape</h2>
                                 <p style={{ color: 'var(--gray)', marginTop: '10px' }}>Our vision engine maps your unique geometry for a perfect fit.</p>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px' }}>
+                            <div className="responsive-grid">
                                 {faceShapes.map(s => (
                                     <button
                                         key={s}
@@ -91,7 +90,7 @@ const AIStylist = () => {
                                 disabled={!selections.face}
                                 onClick={() => setStep(1)}
                                 className="btn-premium"
-                                style={{ width: '100%', marginTop: '40px', opacity: selections.face ? 1 : 0.5 }}
+                                style={{ width: '100%', marginTop: '40px', opacity: selections.face ? 1 : 0.5, justifyContent: 'center' }}
                             >
                                 Continue To Texture <ChevronRight size={18} />
                             </button>
@@ -105,14 +104,13 @@ const AIStylist = () => {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="business-card"
-                            style={{ padding: '60px' }}
                         >
                             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                                 <Scissors size={48} color="var(--gold)" style={{ marginBottom: '20px' }} />
                                 <h2 style={{ fontSize: '2rem' }}>Hair Texture</h2>
                                 <p style={{ color: 'var(--gray)', marginTop: '10px' }}>Selecting the appropriate ritual based on follicle resistance.</p>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '15px' }}>
+                            <div className="responsive-grid">
                                 {hairTypes.map(s => (
                                     <button
                                         key={s}
@@ -131,14 +129,14 @@ const AIStylist = () => {
                                     </button>
                                 ))}
                             </div>
-                            <div style={{ display: 'flex', gap: '15px', marginTop: '40px' }}>
-                                <button onClick={() => setStep(0)} style={{ border: '1px solid var(--glass-border)', background: 'transparent', color: 'white', padding: '15px 25px', cursor: 'pointer' }}>Back</button>
+                            <div style={{ display: 'flex', gap: '15px', marginTop: '40px', flexWrap: 'wrap' }}>
+                                <button onClick={() => setStep(0)} style={{ border: '1px solid var(--glass-border)', background: 'transparent', color: 'white', padding: '15px 25px', cursor: 'pointer', flex: '1 1 100px' }}>Back</button>
                                 <button
                                     className="btn-premium"
-                                    style={{ flex: 1, opacity: selections.hairType ? 1 : 0.5 }}
+                                    style={{ flex: '2 1 200px', opacity: selections.hairType ? 1 : 0.5, justifyContent: 'center' }}
                                     onClick={generateStyle}
                                 >
-                                    Generate Bespoke Ritual <Sparkles size={18} />
+                                    Generate Ritual <Sparkles size={18} />
                                 </button>
                             </div>
                         </motion.div>
@@ -154,23 +152,25 @@ const AIStylist = () => {
                     )}
 
                     {step === 3 && recommendation && (
-                        <motion.div key="s4" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="business-card" style={{ textAlign: 'center', padding: '60px' }}>
+                        <motion.div key="s4" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="business-card" style={{ textAlign: 'center' }}>
                             <Sparkles size={64} color="var(--gold)" style={{ marginBottom: '30px' }} />
                             <h2 style={{ fontSize: '2.5rem', color: 'var(--gold)' }}>{recommendation.style}</h2>
                             <p style={{ color: 'var(--gray)', fontSize: '1.2rem', marginTop: '20px', lineHeight: '1.8' }}>{recommendation.desc}</p>
-                            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '40px' }}>
+                            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '40px', flexWrap: 'wrap' }}>
                                 <Link
                                     to={`/booking?service=${encodeURIComponent(recommendation.style)}`}
                                     className="btn-premium"
+                                    style={{ flex: '1 1 250px', justifyContent: 'center' }}
                                 >
-                                    Book This Signature Look
+                                    Book Signature Look
                                 </Link>
-                                <button onClick={() => setStep(0)} style={{ background: 'transparent', border: '1px solid var(--glass-border)', color: 'white', padding: '12px 25px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <button onClick={() => setStep(0)} style={{ background: 'transparent', border: '1px solid var(--glass-border)', color: 'white', padding: '12px 25px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'center', flex: '1 1 150px' }}>
                                     <RotateCcw size={16} /> Reset
                                 </button>
                             </div>
                         </motion.div>
                     )}
+
                 </AnimatePresence>
             </div>
         </div>

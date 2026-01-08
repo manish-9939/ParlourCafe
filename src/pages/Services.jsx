@@ -29,9 +29,9 @@ const serviceCategories = [
 
 const Services = () => {
     return (
-        <div className="catalogue-page" style={{ paddingTop: '100px', background: 'var(--dark)' }}>
+        <div className="catalogue-page" style={{ background: 'var(--dark)' }}>
             {/* Header */}
-            <header style={{ padding: '100px 0 60px', textAlign: 'center' }}>
+            <header style={{ padding: '160px 0 80px', textAlign: 'center' }}>
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -39,8 +39,8 @@ const Services = () => {
                         transition={{ duration: 1 }}
                     >
                         <span className="section-tag">Signature Catalogue</span>
-                        <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', marginBottom: '20px' }}>EXECUTIVE <span className="text-outline">RITUALS</span></h1>
-                        <p style={{ color: 'var(--gray)', maxWidth: '600px', margin: '0 auto' }}>Explore our curated collection of high-performance beauty solutions.</p>
+                        <h1>EXECUTIVE <span className="text-outline">RITUALS</span></h1>
+                        <p style={{ color: 'var(--gray)', maxWidth: '600px', margin: '20px auto 0' }}>Explore our curated collection of high-performance beauty solutions.</p>
                     </motion.div>
                 </div>
             </header>
@@ -49,7 +49,7 @@ const Services = () => {
             {serviceCategories.map((cat, idx) => (
                 <section key={idx} style={{ padding: '100px 0', background: idx % 2 === 0 ? 'var(--dark-soft)' : 'var(--dark)', borderTop: '1px solid var(--glass-border)' }}>
                     <div className="container">
-                        <div className="grid-2" style={{ gap: '80px', flexDirection: idx % 2 !== 0 ? 'row-reverse' : 'row', alignItems: 'center' }}>
+                        <div className="grid-2" style={{ flexDirection: idx % 2 !== 0 ? 'row-reverse' : 'row', alignItems: 'center' }}>
                             <motion.div
                                 initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -81,9 +81,9 @@ const Services = () => {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 1.2 }}
-                                style={{ height: '600px', width: '100%', position: 'relative' }}
+                                style={{ width: '100%', position: 'relative' }}
                             >
-                                <img src={cat.img} alt={cat.category} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <img src={cat.img} alt={cat.category} style={{ width: '100%', height: 'auto', minHeight: '400px', maxHeight: '600px', objectFit: 'cover' }} />
                                 <div style={{ position: 'absolute', inset: '0', border: '1px solid var(--gold)', transform: 'translate(20px, 20px)', zIndex: -1 }}></div>
                             </motion.div>
                         </div>
@@ -96,11 +96,12 @@ const Services = () => {
                 <div className="container">
                     <h2 style={{ fontSize: '3rem', marginBottom: '20px' }}>Tailored Excellence</h2>
                     <p style={{ color: 'var(--gray)', marginBottom: '50px', maxWidth: '600px', margin: '0 auto 50px' }}>Our consultants are available for complex aesthetic architecture planning.</p>
-                    <Link to="/booking" className="btn-premium btn-secondary" style={{ padding: '20px 50px' }}>Contact Specialist</Link>
+                    <Link to="/booking" className="btn-premium" style={{ padding: '20px 50px' }}>Contact Specialist</Link>
                 </div>
             </section>
         </div>
     );
 };
+
 
 export default Services;

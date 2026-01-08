@@ -63,7 +63,7 @@ const Home = () => {
                             Experience the intersection of artisan mastery and robotic precision.
                             Our creative atelier transforms regular routines into high-end rituals.
                         </p>
-                        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                        <div className="hero-actions">
                             <Link to="/booking" className="btn-premium" style={{ gap: '12px', padding: '18px 45px' }}>
                                 Secure Appointment <ArrowRight size={20} />
                             </Link>
@@ -87,16 +87,7 @@ const Home = () => {
                             initial={{ y: 0 }}
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            style={{
-                                position: 'absolute',
-                                bottom: '15%',
-                                right: '10%',
-                                background: 'rgba(8, 8, 8, 0.8)',
-                                backdropFilter: 'blur(20px)',
-                                border: '1px solid var(--gold)',
-                                padding: '30px',
-                                zIndex: 10
-                            }}
+                            className="atelier-vision-card"
                         >
                             <Play color="var(--gold)" fill="var(--gold)" size={24} style={{ marginBottom: '15px' }} />
                             <h4 style={{ letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.8rem' }}>The Atelier Vision</h4>
@@ -164,12 +155,12 @@ const Home = () => {
             {/* ADDITIONAL SECTION TO SHOW DEPTH */}
             <section style={{ padding: '120px 0', background: 'var(--dark)' }}>
                 <div className="container">
-                    <div className="grid-2" style={{ gap: '100px', alignItems: 'center' }}>
+                    <div className="grid-2">
                         <div style={{ position: 'relative' }}>
-                            <img src="/studio.jpg" alt="Studio" style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
-                            <div style={{ position: 'absolute', top: '-20px', left: '-20px', width: '100%', height: '100%', border: '1px solid var(--gold)', zIndex: -1 }}></div>
+                            <img src="/studio.jpg" alt="Studio" style={{ width: '100%', height: 'auto', minHeight: '400px', objectFit: 'cover' }} />
+                            <div style={{ position: 'absolute', top: '-15px', left: '-15px', width: '100%', height: '100%', border: '1px solid var(--gold)', zIndex: -1 }}></div>
                         </div>
-                        <div>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             <span className="section-tag">Our Environment</span>
                             <h2 style={{ fontSize: '3rem', marginBottom: '30px' }}>Sanctuary of <span className="text-gold">Excellence</span></h2>
                             <p style={{ color: 'var(--gray)', fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -182,5 +173,6 @@ const Home = () => {
         </div>
     );
 };
+
 
 export default Home;
